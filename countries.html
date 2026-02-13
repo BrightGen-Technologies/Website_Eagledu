@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Destination Countries - Eagledu helps you study in USA, UK, Canada, Australia, Germany, Italy, Ireland, Dubai, Singapore, Malaysia, Cyprus and more.">
+    <meta name="keywords" content="study abroad, countries, universities, international education, destinations">
+    <meta name="author" content="Eagledu Services LLP">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="icon" type="image/x-icon" href="./favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
+    <title>Countries - Eagledu Services LLP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #fefefe;
+            --indigo: #3b3572;
+            --red: #bf2b31;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.80);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .logo span {
+            color: var(--red);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--indigo);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .nav-links a.active {
+            color: var(--red);
+            border-bottom: 2px solid var(--red);
+            padding-bottom: 0.5rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--indigo);
+            margin: 5px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--indigo) 0%, #2d2654 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .page-header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--indigo);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--red);
+            bottom: 0;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        /* Country Cards */
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .country-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(59, 53, 114, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--red);
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(191, 43, 49, 0.2);
+        }
+
+        .country-header {
+            background: linear-gradient(135deg, var(--indigo) 0%, #2d2654 100%);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .country-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .country-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-header p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .country-content {
+            padding: 2rem;
+        }
+
+        .country-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .highlights {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlights li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            color: #555;
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .highlights li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: bold;
+        }
+
+        .popular-unis {
+            background: rgba(59, 53, 114, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .popular-unis h4 {
+            color: var(--indigo);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .popular-unis p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Featured Countries */
+        .featured-countries {
+            background: linear-gradient(135deg, rgba(59, 53, 114, 0.05), rgba(191, 43, 49, 0.05));
+            padding: 3rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--red);
+            margin-bottom: 4rem;
+        }
+
+        .featured-countries h3 {
+            color: var(--indigo);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .featured-countries p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--red) 0%, #a01e24 100%);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin: 4rem 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--red);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== PREMIUM ROUNDED FOOTER ===== */
+
+        .premium-footer {
+            margin-top: 4rem;
+            font-family: inherit;
+        }
+
+        /* Main Blue Section */
+        .footer-main {
+            background: linear-gradient(135deg, var(--indigo), #2d2654);
+            border-radius: 35px;
+            padding: 3rem 2rem;
+            max-width: 1300px;
+            margin: auto;
+            color: var(--white);
+        }
+
+        /* Contact Section */
+        .footer-contact {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .footer-contact h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-contact p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Glass Navigation Bar */
+        .footer-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Logo */
+        .footer-logo img {
+            height: 45px;
+        }
+
+        /* Navigation Links */
+        .footer-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-links a {
+            color: var(--indigo);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--red);
+        }
+
+        /* Social Icons */
+        .footer-socials a {
+            color: var(--indigo);
+            margin-left: 12px;
+            font-size: 1.1rem;
+            transition: 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            color: var(--red);
+        }
+
+        /* Bottom Copyright */
+        .footer-copyright {
+            max-width: 1300px;
+            margin: 1rem auto 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: var(--indigo);
+        }
+
+        .footer-copyright span {
+            color: var(--red);
+            font-weight: 600;
+        }
+
+        .footer-bottom-links a {
+            margin-left: 20px;
+            color: var(--indigo);
+            text-decoration: none;
+            opacity: 0.9;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .footer-nav {
+                flex-direction: column;
+                border-radius: 25px;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-copyright {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .footer-bottom-links a {
+                margin: 0 10px;
+            }
+        }
+
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 90px; /* just below navbar */
+            right: 20px;
+            width: 280px;
+            max-height: 75vh;
+            overflow-y: auto;
+            background: rgba(59, 53, 114, 0.95);
+            backdrop-filter: blur(12px);
+            border-radius: 15px;
+            padding: 1rem 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 2000;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(-10px);
+            pointer-events: none;
+        }
+
+
+                .mobile-menu.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+
+                .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(5px);
+            z-index: 1500;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu-close:hover {
+            color: var(--red);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            margin-top: 3rem;
+        }
+
+        .mobile-menu li {
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--red);
+        }
+
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about-content {
+                padding: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+            }
+
+            .footer-links a {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Eagledu_logo.png" alt="Eagledu Services LLP Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="countries.html" class="active">Countries</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="closeMenu">&times;</button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="countries.html">Countries</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+        </ul>
+    </div>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Study Destinations</h1>
+            <p>Explore Your Options Across The Globe</p>
+        </div>
+    </section>
+
+    <!-- Featured Countries Info -->
+    <section class="content-section">
+        <div class="featured-countries">
+            <h3>🌍 Global Opportunities</h3>
+            <p>Eagledu helps you explore and access education opportunities in over 50 countries worldwide. Whether you're looking for research-focused institutions, industry leaders, or culturally diverse experiences, we guide you to the perfect destination.</p>
+            <p>Our extensive network and partnerships ensure you have access to the best universities globally, with expert guidance on visa, scholarships, and career prospects in each location.</p>
+        </div>
+    </section>
+
+    <!-- Countries Grid -->
+    <section class="content-section">
+        <h2 class="section-title">Popular Study Destinations</h2>
+        <div class="countries-grid">
+            <!-- USA -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇺🇸</div>
+                    <h3>United States</h3>
+                    <p>World's Top Universities</p>
+                </div>
+                <div class="country-content">
+                    <p>The USA offers world-class education with diverse opportunities in engineering, business, medicine, and more. Home to prestigious institutions like MIT, Stanford, and Harvard.</p>
+                    <ul class="highlights">
+                        <li>Flexible course structures</li>
+                        <li>Strong career prospects</li>
+                        <li>Excellent on-campus employment</li>
+                        <li>Advanced research facilities</li>
+                        <li>Post-study work options</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>MIT, Stanford, Harvard, Yale, Columbia, Berkeley, Caltech, Northwestern</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UK -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇬🇧</div>
+                    <h3>United Kingdom</h3>
+                    <p>Historic Excellence</p>
+                </div>
+                <div class="country-content">
+                    <p>The UK provides world-renowned education with shorter duration programs. Oxford and Cambridge lead alongside Russell Group universities offering cutting-edge research.</p>
+                    <ul class="highlights">
+                        <li>1-2 year programs</li>
+                        <li>Strong international reputation</li>
+                        <li>Research-focused education</li>
+                        <li>Post-study work visa</li>
+                        <li>Affordable compared to USA</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>Oxford, Cambridge, LSE, UCL, Imperial College, Edinburgh, Manchester</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Canada -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇨🇦</div>
+                    <h3>Canada</h3>
+                    <p>Student-Friendly Nation</p>
+                </div>
+                <div class="country-content">
+                    <p>Canada offers excellent education with lower costs and a welcoming environment. Known for providing work-study opportunities and pathway to permanent residency.</p>
+                    <ul class="highlights">
+                        <li>Affordable tuition fees</li>
+                        <li>Part-time work allowed</li>
+                        <li>Post-graduation work permit</li>
+                        <li>Clear PR pathway</li>
+                        <li>High quality of life</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>University of Toronto, UBC, McGill, McMaster, Waterloo, University of Alberta</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USA - Italy -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇮🇹</div>
+                    <h3>Italy</h3>
+                    <p>Arts, Culture & History</p>
+                </div>
+                <div class="country-content">
+                    <p>Italy offers affordable education with rich cultural heritage. Ideal for students interested in arts, design, fashion, and European studies with low tuition costs.</p>
+                    <ul class="highlights">
+                        <li>Very low tuition fees</li>
+                        <li>Cultural immersion</li>
+                        <li>Design & arts focus</li>
+                        <li>Historical significance</li>
+                        <li>Quality of life</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>University of Milan, Politecnico di Milano, University of Bologna, Bocconi University</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Australia -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇦🇺</div>
+                    <h3>Australia</h3>
+                    <p>Gateway to Asia-Pacific</p>
+                </div>
+                <div class="country-content">
+                    <p>Australia provides excellent education with flexible visa policies and work opportunities. Perfect for students seeking to explore Asia-Pacific region while studying.</p>
+                    <ul class="highlights">
+                        <li>Substantial work opportunities</li>
+                        <li>Relaxed visa policies</li>
+                        <li>Quality universities</li>
+                        <li>Better weather & lifestyle</li>
+                        <li>Friendly student community</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>University of Melbourne, University of Sydney, ANU, UNSW, Monash</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Germany -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇩🇪</div>
+                    <h3>Germany</h3>
+                    <p>Engineering & Innovation Hub</p>
+                </div>
+                <div class="country-content">
+                    <p>Germany excels in engineering, technology, and research. Most public universities charge no or minimal tuition, making it cost-effective for quality education.</p>
+                    <ul class="highlights">
+                        <li>Low/no tuition fees</li>
+                        <li>World-class engineering</li>
+                        <li>Strong industrial partnerships</li>
+                        <li>Internship opportunities</li>
+                        <li>Post-study work visa</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>Technische Universität München, Heidelberg University, Berlin Free University, RWTH Aachen</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ireland -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇮🇪</div>
+                    <h3>Ireland</h3>
+                    <p>Gateway to Europe</p>
+                </div>
+                <div class="country-content">
+                    <p>Ireland offers quality education with a strong tech hub status. Good work opportunities and pathway to European opportunities, with English as the primary language.</p>
+                    <ul class="highlights">
+                        <li>Tech industry hub</li>
+                        <li>English-speaking country</li>
+                        <li>Work-friendly policies</li>
+                        <li>Gateway to Europe</li>
+                        <li>Vibrant student life</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>Trinity College Dublin, University College Dublin (UCD), University of Limerick</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Singapore -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇸🇬</div>
+                    <h3>Singapore</h3>
+                    <p>Asia's Education Hub</p>
+                </div>
+                <div class="country-content">
+                    <p>Singapore offers excellent quality education with strong career prospects in Asia. Highly developed infrastructure and multicultural environment perfect for international students.</p>
+                    <ul class="highlights">
+                        <li>Top Asia universities</li>
+                        <li>Strong career prospects</li>
+                        <li>Safe & clean city</li>
+                        <li>International environment</li>
+                        <li>Gateway to Asia</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>National University of Singapore (NUS), Nanyang Technological University (NTU)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Malaysia -->
+            <div class="country-card">
+                <div class="country-header">
+                    <div class="country-flag">🇲🇾</div>
+                    <h3>Malaysia</h3>
+                    <p>Affordable Quality Education</p>
+                </div>
+                <div class="country-content">
+                    <p>Malaysia offers affordable, quality education with modern universities and good living standards. Perfect for students seeking good value and Asian experience.</p>
+                    <ul class="highlights">
+                        <li>Very affordable tuition</li>
+                        <li>Modern universities</li>
+                        <li>Low living costs</li>
+                        <li>Diverse student body</li>
+                        <li>Growing job market</li>
+                    </ul>
+                    <div class="popular-unis">
+                        <h4>Top Universities</h4>
+                        <p>Universiti Malaya, Taylor's University, Sunway University, INTI International University</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Destinations -->
+    <section class="content-section">
+        <h2 class="section-title">More Destinations</h2>
+        <div class="featured-countries" style="margin-bottom: 0;">
+            <h3>We Also Help With</h3>
+            <p><strong>Dubai & UAE:</strong> Premium education with excellent career prospects in Middle East. Strong salary packages and tax benefits.</p>
+            <p><strong>Cyprus:</strong> Affordable European education with English-medium programs. Gateway to EU with reasonable costs.</p>
+            <p><strong>European Countries:</strong> We facilitate admissions to universities across France, Spain, Netherlands, Belgium, Sweden, and more. Each offering unique advantages.</p>
+            <p>We have partnerships and expertise in over 50 countries, ensuring you have access to worldwide opportunities that match your profile and aspirations.</p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Explore Your Best Destination</h2>
+        <p>Unsure which country is right for you? Our counselors can help you choose the perfect destination.</p>
+        <a href="contact.html" class="cta-btn">Start Your Journey</a>
+    </section>
+
+    <!-- ===== PREMIUM ROUNDED FOOTER ===== -->
+    <footer class="premium-footer">
+
+        <div class="footer-main">
+
+            <!-- Contact Info -->
+            <div class="footer-contact">
+                <h3>+91 7799776678 / 7799776679</h3>
+                <p>2nd Floor, SARLA MANSION, 10/A, SR NAGAR, X ROADS, Mothi Nagar, Vengal Rao Nagar, Hyderabad, Telangana - 500038.</p>
+            </div>
+
+            <!-- Glass Navigation Bar -->
+            <div class="footer-nav">
+
+                <div class="footer-logo">
+                    <img src="Eagledu_logo.png" alt="Eagledu Services LLP Logo">
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="countries.html">Countries</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/eagleduservices"><i class="fab fa-instagram"></i></a>
+                    <a href="https://share.google/IvLhwJCq65vtq8qhB"><i class="fa-solid fa-map-location-dot"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        <div class="footer-copyright">
+            <p>© <span id="year"></span> <span>Eagledu Services LLP</span>. All Rights Reserved.</p>
+
+            <div class="footer-bottom-links">
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+        </div>
+
+    </footer>
+
+<!-- ===== FLOATING BUTTONS (Tailwind) ===== -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+
+        <!-- WhatsApp Button -->
+    <a href="https://wa.me/917799776678?text=Hello%20Eagledu%20Services%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
+        target="_blank"
+        class="flex items-center justify-center 
+                w-14 h-14 rounded-full 
+                bg-green-500 text-white 
+                shadow-lg hover:shadow-2xl 
+                hover:scale-110 hover:bg-green-600
+                transition-all duration-300 ease-in-out">
+
+        <!-- WhatsApp Icon -->
+        <?xml version="1.0" encoding="iso-8859-1"?>
+        <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+        <!-- License: CC0. Made by SVG Repo: https://www.svgrepo.com/svg/158412/whatsapp -->
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            viewBox="0 0 418.135 418.135" style="enable-background:new 0 0 418.135 418.135;" xml:space="preserve">
+        <g>
+            <path style="fill:#ffffff;" d="M198.929,0.242C88.5,5.5,1.356,97.466,1.691,208.02c0.102,33.672,8.231,65.454,22.571,93.536
+                L2.245,408.429c-1.191,5.781,4.023,10.843,9.766,9.483l104.723-24.811c26.905,13.402,57.125,21.143,89.108,21.631
+                c112.869,1.724,206.982-87.897,210.5-200.724C420.113,93.065,320.295-5.538,198.929,0.242z M323.886,322.197
+                c-30.669,30.669-71.446,47.559-114.818,47.559c-25.396,0-49.71-5.698-72.269-16.935l-14.584-7.265l-64.206,15.212l13.515-65.607
+                l-7.185-14.07c-11.711-22.935-17.649-47.736-17.649-73.713c0-43.373,16.89-84.149,47.559-114.819
+                c30.395-30.395,71.837-47.56,114.822-47.56C252.443,45,293.218,61.89,323.887,92.558c30.669,30.669,47.559,71.445,47.56,114.817
+                C371.446,250.361,354.281,291.803,323.886,322.197z"/>
+            <path style="fill:#ffffff;" d="M309.712,252.351l-40.169-11.534c-5.281-1.516-10.968-0.018-14.816,3.903l-9.823,10.008
+                c-4.142,4.22-10.427,5.576-15.909,3.358c-19.002-7.69-58.974-43.23-69.182-61.007c-2.945-5.128-2.458-11.539,1.158-16.218
+                l8.576-11.095c3.36-4.347,4.069-10.185,1.847-15.21l-16.9-38.223c-4.048-9.155-15.747-11.82-23.39-5.356
+                c-11.211,9.482-24.513,23.891-26.13,39.854c-2.851,28.144,9.219,63.622,54.862,106.222c52.73,49.215,94.956,55.717,122.449,49.057
+                c15.594-3.777,28.056-18.919,35.921-31.317C323.568,266.34,319.334,255.114,309.712,252.351z"/>
+        </g>
+        </svg>
+        </a>
+
+        
+        <!-- Apply Now Button (Indigo Gradient) -->
+        <a href="/contact.html"
+            class="flex items-center gap-2 px-6 py-3 rounded-full 
+                    bg-gradient-to-r from-red-600 to-indigo-600 
+                    text-white font-semibold shadow-lg 
+                    hover:shadow-2xl hover:scale-105 
+                    transition-all duration-300 ease-in-out">
+            <!-- Icon -->   
+            Enquire Now
+        </a>
+    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenu = document.getElementById('closeMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Close menu when link is clicked
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+            });
+        });
+
+        // Active nav link
+        const currentLocation = location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentLocation) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
