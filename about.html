@@ -203,6 +203,109 @@
             opacity: 0.7;
         }
 
+        /* ===== ABOUT SECTION ===== */
+
+        .about-section {
+            padding: 80px 20px;
+            background: #ffffff;
+        }
+
+        .about-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        /* Text */
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--indigo);
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #555;
+        }
+
+        /* Image box */
+        .about-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image-icon {
+            width: 260px;
+            height: 260px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--indigo), #b0a8de);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 90px;
+            color: #fff;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+        }
+
+        /* ===== RESPONSIVE ===== */
+
+        /* Tablet */
+        @media (max-width: 992px) {
+            .about-grid {
+                gap: 40px;
+            }
+
+            .about-image-icon {
+                width: 220px;
+                height: 220px;
+                font-size: 70px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-text {
+                order: 2;
+            }
+
+            .about-image {
+                order: 1;
+                margin-bottom: 20px;
+            }
+
+            .about-image-icon {
+                width: 180px;
+                height: 180px;
+                font-size: 55px;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .about-section {
+                padding: 60px 15px;
+            }
+
+            .about-text h3 {
+                font-size: 1.6rem;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+            }
+        }
+
+
         /* Why Choose Us */
         .why-choose {
             background: #f8f9fa;
@@ -638,18 +741,23 @@
     </section>
 
     <!-- About Section -->
-    <section class="content-section">
+    <section class="content-section about-section">
         <div class="about-grid">
+
             <div class="about-text">
                 <h3>Our Story</h3>
                 <p>Eagledu Services LLP is a leading overseas education consultancy based in SR Nagar, Hyderabad. Founded with a vision to bridge the gap between aspiring students and world-class educational institutions, we have successfully guided thousands of students to achieve their dreams of studying abroad.</p>
+
                 <p>With years of dedicated experience and deep expertise in the education sector, we understand the complexities and challenges of international education. Our team of experts is committed to providing personalized, comprehensive guidance to ensure every student finds their perfect match in terms of university, course, and country of study.</p>
             </div>
+
             <div class="about-image">
                 <div class="about-image-icon">🎓</div>
             </div>
+
         </div>
     </section>
+
 
     <!-- Our Mission & Vision -->
     <section class="why-choose">
@@ -709,8 +817,8 @@
             <h2 class="section-title" style="color: var(--white);">Our Achievements</h2>
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>2000+</h3>
-                    <p>Students Placed</p>
+                    <h3>1000+</h3>
+                    <p>Students Visa Successful</p>
                 </div>
                 <div class="stat-item">
                     <h3>500+</h3>
@@ -721,7 +829,7 @@
                     <p>Countries</p>
                 </div>
                 <div class="stat-item">
-                    <h3>95%</h3>
+                    <h3>100%</h3>
                     <p>Success Rate</p>
                 </div>
             </div>
@@ -767,7 +875,7 @@
             <!-- Contact Info -->
             <div class="footer-contact">
                 <h3>+91 7799776678 / 7799776679</h3>
-                <p>2nd Floor, SARLA MANSION, 10/A, SR NAGAR, X ROADS, Mothi Nagar, Vengal Rao Nagar, Hyderabad, Telangana - 500038.</p>
+                <p>Flat No. 202, 2nd Floor, Sarla Mansion, 10/A, SR Nagar X Roads, Opposite SR Nagar Metro Station, Hyderabad, Telangana - 500038.</p>
             </div>
 
             <!-- Glass Navigation Bar -->

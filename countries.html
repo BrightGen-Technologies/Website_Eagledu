@@ -167,10 +167,14 @@
 
         /* Country Cards */
         .countries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            display: block; /* stacked sections instead of grid */
             margin-top: 2rem;
+        }
+
+        .country-section {
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            padding: 0 2rem;
         }
 
         .country-card {
@@ -572,6 +576,93 @@
                 margin: 0.5rem 0;
             }
         }
+
+        /* Expandable Card Styles */
+        .know-more {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.6rem 1rem;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--indigo);
+            border: 2px solid var(--indigo);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .know-more:hover {
+            background: var(--indigo);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .more-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.35s ease;
+            transform: translateY(-6px);
+            margin-top: 1rem;
+            background: linear-gradient(180deg, rgba(59,53,114,0.03), rgba(191,43,49,0.02));
+            padding: 0 1rem;
+            border-radius: 8px;
+        }
+
+        /* Preview truncation */
+        .preview {
+            max-height: 140px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 48px;
+            background: linear-gradient(180deg, rgba(255,255,255,0), var(--white));
+            pointer-events: none;
+        }
+
+        .country-card.expanded .preview::after {
+            display: none;
+        }
+
+        .country-card.expanded {
+            transform: translateY(-6px) scale(1.02);
+            z-index: 999;
+            box-shadow: 0 30px 70px rgba(59,53,114,0.18);
+            border-top-color: var(--indigo);
+        }
+
+        .country-card.expanded .more-content {
+            max-height: 520px;
+            opacity: 1;
+            transform: translateY(0);
+            padding: 1rem;
+        }
+
+        .close-more {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 8px;
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Dim other cards when one is expanded (optional premium effect) */
+        .cards-dim .country-card:not(.expanded) {
+            opacity: 0.45;
+            filter: blur(0.4px) saturate(0.9);
+            transform: scale(0.995);
+        }
     </style>
 </head>
 <body>
@@ -630,228 +721,682 @@
         </div>
     </section>
 
+    
+
     <!-- Countries Grid -->
     <section class="content-section">
         <h2 class="section-title">Popular Study Destinations</h2>
         <div class="countries-grid">
             <!-- USA -->
-            <div class="country-card">
+            <section class="country-section" id="usa-section">
+            <div id="usa" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇺🇸</div>
                     <h3>United States</h3>
                     <p>World's Top Universities</p>
                 </div>
                 <div class="country-content">
-                    <p>The USA offers world-class education with diverse opportunities in engineering, business, medicine, and more. Home to prestigious institutions like MIT, Stanford, and Harvard.</p>
-                    <ul class="highlights">
-                        <li>Flexible course structures</li>
-                        <li>Strong career prospects</li>
-                        <li>Excellent on-campus employment</li>
-                        <li>Advanced research facilities</li>
-                        <li>Post-study work options</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>MIT, Stanford, Harvard, Yale, Columbia, Berkeley, Caltech, Northwestern</p>
-                    </div>
+                            <div class="preview">
+                                <p>The USA offers world-class education with diverse opportunities in engineering, business, medicine, and more. Home to prestigious institutions like MIT, Stanford, and Harvard.</p>
+                                <ul class="highlights">
+                                    <li>Flexible course structures</li>
+                                    <li>Strong career prospects</li>
+                                    <li>Excellent on-campus employment</li>
+                                </ul>
+                                <div class="popular-unis">
+                                    <h4>Top Universities</h4>
+                                    <p>MIT, Stanford, Harvard, Yale, Columbia, Berkeley, Caltech, Northwestern</p>
+                                </div>
+                            </div>
+
+                            <div class="more-content">
+                                <h4>Initial Counselling</h4>
+                                <p>One-on-one profile assessment covering academics, test scores, finances and career goals; personalised plan and timeline.</p>
+
+                                <h4>University Shortlisting</h4>
+                                <p>Target, reach and safety universities shortlisted based on your profile, specialization, scholarships and ROI.</p>
+
+                                <h4>Admission Process</h4>
+                                <ol>
+                                    <li>Prepare SOPs, LORs, CV and transcripts.</li>
+                                    <li>Submit applications, track deadlines and follow up.</li>
+                                    <li>Interview prep & mock interviews (if required).</li>
+                                </ol>
+
+                                <h4>Documents Required</h4>
+                                <ul>
+                                    <li>Passport, academic transcripts, degree certificates</li>
+                                    <li>English test scores (IELTS/TOEFL) where applicable</li>
+                                    <li>SOP, CV, LORs, financial statements</li>
+                                </ul>
+
+                                <h4>Visa Process</h4>
+                                <p>Complete visa application, biometrics, interview guidance and financial proof assistance tailored to US consulate requirements.</p>
+
+                                <h4>Departure & Arrival</h4>
+                                <p>Pre-departure briefing, travel checklist, accommodation assistance and on-arrival orientation support.</p>
+
+                                <h4>Post-Arrival Support</h4>
+                                <p>Banking, SIM, local registration help, academic integration and placement guidance.</p>
+
+                                <button class="close-more">Close</button>
+                            </div>
                 </div>
             </div>
+            </section>
 
             <!-- UK -->
-            <div class="country-card">
+            <section class="country-section">
+            <div id="uk" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇬🇧</div>
                     <h3>United Kingdom</h3>
                     <p>Historic Excellence</p>
                 </div>
                 <div class="country-content">
-                    <p>The UK provides world-renowned education with shorter duration programs. Oxford and Cambridge lead alongside Russell Group universities offering cutting-edge research.</p>
-                    <ul class="highlights">
-                        <li>1-2 year programs</li>
-                        <li>Strong international reputation</li>
-                        <li>Research-focused education</li>
-                        <li>Post-study work visa</li>
-                        <li>Affordable compared to USA</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>Oxford, Cambridge, LSE, UCL, Imperial College, Edinburgh, Manchester</p>
+                    <div class="preview">
+                        <p>The UK provides world-renowned education with shorter duration programs. Oxford and Cambridge lead alongside Russell Group universities offering cutting-edge research.</p>
+                        <ul class="highlights">
+                            <li>1-2 year programs</li>
+                            <li>Strong international reputation</li>
+                            <li>Research-focused education</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>Oxford, Cambridge, LSE, UCL, Imperial College, Edinburgh, Manchester</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Guidance on program length, funding, scholarships and work options; define target cities and universities.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Shortlist by program intensity, faculty, scholarship availability and industry links.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare SOP, references and tailored applications.</li>
+                            <li>Apply via UCAS (undergrad) or direct portals (postgrad).</li>
+                            <li>Interview & portfolio preparation for specialised programs.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Transcripts, degree certificates, English test reports</li>
+                            <li>Reference letters, SOP, CV, financial documents</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Tier 4 / Student visa application guidance, biometrics, CAS processing and proof of funds preparation.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Pre-departure checklist, travel insurance, accommodation confirmation and arrival help.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>University enrollment, local registrations, and orientation with job and internship guidance.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- Canada -->
+            <section class="country-section">
             <div class="country-card">
-                <div class="country-header">
+                <div id="canada"class="country-header">
                     <div class="country-flag">🇨🇦</div>
                     <h3>Canada</h3>
                     <p>Student-Friendly Nation</p>
                 </div>
                 <div class="country-content">
-                    <p>Canada offers excellent education with lower costs and a welcoming environment. Known for providing work-study opportunities and pathway to permanent residency.</p>
-                    <ul class="highlights">
-                        <li>Affordable tuition fees</li>
-                        <li>Part-time work allowed</li>
-                        <li>Post-graduation work permit</li>
-                        <li>Clear PR pathway</li>
-                        <li>High quality of life</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>University of Toronto, UBC, McGill, McMaster, Waterloo, University of Alberta</p>
+                    <div class="preview">
+                        <p>Canada offers excellent education with lower costs and a welcoming environment. Known for providing work-study opportunities and pathway to permanent residency.</p>
+                        <ul class="highlights">
+                            <li>Affordable tuition fees</li>
+                            <li>Part-time work allowed</li>
+                            <li>Post-graduation work permit</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>University of Toronto, UBC, McGill, McMaster, Waterloo, University of Alberta</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Advice on programs with co-op/internship options, provincial variations and PR pathways.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Shortlist based on co-op availability, regional job markets and scholarship options.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare transcripts, SOP, LORs and English tests.</li>
+                            <li>Apply to institutions with clear co-op pathways.</li>
+                            <li>Manage offers, acceptances and study permits.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Academic records, passport, language test results</li>
+                            <li>Financial proof, SOP, CV and reference letters</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Study permit application, biometrics, medical checks (if required), and travel documentation guidance.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Pre-departure, arrival support, SIN registration and housing assistance.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Work permit transitions, PR pathways guidance and job networking support.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- USA - Italy -->
+            <section class="country-section">
             <div class="country-card">
-                <div class="country-header">
+                <div id="italy" class="country-header">
                     <div class="country-flag">🇮🇹</div>
                     <h3>Italy</h3>
                     <p>Arts, Culture & History</p>
                 </div>
                 <div class="country-content">
-                    <p>Italy offers affordable education with rich cultural heritage. Ideal for students interested in arts, design, fashion, and European studies with low tuition costs.</p>
-                    <ul class="highlights">
-                        <li>Very low tuition fees</li>
-                        <li>Cultural immersion</li>
-                        <li>Design & arts focus</li>
-                        <li>Historical significance</li>
-                        <li>Quality of life</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>University of Milan, Politecnico di Milano, University of Bologna, Bocconi University</p>
+                    <div class="preview">
+                        <p>Italy offers affordable education with rich cultural heritage. Ideal for students interested in arts, design, fashion, and European studies with low tuition costs.</p>
+                        <ul class="highlights">
+                            <li>Very low tuition fees</li>
+                            <li>Cultural immersion</li>
+                            <li>Design & arts focus</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>University of Milan, Politecnico di Milano, University of Bologna, Bocconi University</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Guidance for arts, design and humanities students including scholarship and tuition structures in public and private institutions.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Select universities by program strengths in design, fashion and arts, and compare living costs across cities.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare portfolio (for arts/design), transcripts and language proof.</li>
+                            <li>Apply to universities with guidance on entrance tests/portfolios.</li>
+                            <li>Manage offer, matriculation and visa support.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Academic records, passport, portfolio (where applicable)</li>
+                            <li>Proof of funds, language certificates (if required)</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Student visa application, residence permits (Permesso di Soggiorno) and pre-departure paperwork assistance.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Assistance with travel, accommodation options and registration with local authorities.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Orientation, banking setup, local SIM and cultural integration guidance.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- Australia -->
-            <div class="country-card">
+            <section class="country-section">
+            <div id="australia" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇦🇺</div>
                     <h3>Australia</h3>
                     <p>Gateway to Asia-Pacific</p>
                 </div>
                 <div class="country-content">
-                    <p>Australia provides excellent education with flexible visa policies and work opportunities. Perfect for students seeking to explore Asia-Pacific region while studying.</p>
-                    <ul class="highlights">
-                        <li>Substantial work opportunities</li>
-                        <li>Relaxed visa policies</li>
-                        <li>Quality universities</li>
-                        <li>Better weather & lifestyle</li>
-                        <li>Friendly student community</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>University of Melbourne, University of Sydney, ANU, UNSW, Monash</p>
+                    <div class="preview">
+                        <p>Australia provides excellent education with flexible visa policies and work opportunities. Perfect for students seeking to explore Asia-Pacific region while studying.</p>
+                        <ul class="highlights">
+                            <li>Substantial work opportunities</li>
+                            <li>Relaxed visa policies</li>
+                            <li>Quality universities</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>University of Melbourne, University of Sydney, ANU, UNSW, Monash</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Discussion on course duration, PR prospects, scholarship opportunities and regional job markets.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Shortlist based on employment outcomes, research opportunities and city preferences.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare documents, SOP, and references.</li>
+                            <li>Apply and manage conditional offers and enrolment.</li>
+                            <li>Pre-departure and English requirement checks.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Academic transcripts, passport, English scores</li>
+                            <li>Proof of funds, CV, SOP and medical checks if required</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Student visa application (subclass 500), health insurance, COE and evidence of funds preparation.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Flight bookings, OSHC health insurance, accommodation confirmation, and arrival orientation.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Tax file number (TFN), bank accounts, and student services guidance.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- Germany -->
-            <div class="country-card">
+            <section class="country-section">
+            <div id="germany" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇩🇪</div>
                     <h3>Germany</h3>
                     <p>Engineering & Innovation Hub</p>
                 </div>
                 <div class="country-content">
-                    <p>Germany excels in engineering, technology, and research. Most public universities charge no or minimal tuition, making it cost-effective for quality education.</p>
-                    <ul class="highlights">
-                        <li>Low/no tuition fees</li>
-                        <li>World-class engineering</li>
-                        <li>Strong industrial partnerships</li>
-                        <li>Internship opportunities</li>
-                        <li>Post-study work visa</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>Technische Universität München, Heidelberg University, Berlin Free University, RWTH Aachen</p>
+                    <div class="preview">
+                        <p>Germany excels in engineering, technology, and research. Most public universities charge no or minimal tuition, making it cost-effective for quality education.</p>
+                        <ul class="highlights">
+                            <li>Low/no tuition fees</li>
+                            <li>World-class engineering</li>
+                            <li>Strong industrial partnerships</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>Technische Universität München, Heidelberg University, Berlin Free University, RWTH Aachen</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Advisory on tuition-free options, language requirements and research-focused pathways.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Find technical universities and applied sciences with strong industry ties and internship pipelines.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare translated transcripts, language proof (German/English) and required certifications.</li>
+                            <li>Apply via university portals or UniAssist as applicable.</li>
+                            <li>Manage admission letters and blocked account proof if required.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Academic records, passport, translation of documents (if needed)</li>
+                            <li>Proof of funds, language certificates and CV</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>National or student visa application through German consulate, residency registration and health insurance requirements.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Registration with local authorities (Anmeldung), accommodation set-up and orientation.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Assistance with internships, part-time work regulations and local networking.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- Ireland -->
-            <div class="country-card">
+            <section class="country-section">
+            <div id="ireland" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇮🇪</div>
                     <h3>Ireland</h3>
                     <p>Gateway to Europe</p>
                 </div>
                 <div class="country-content">
-                    <p>Ireland offers quality education with a strong tech hub status. Good work opportunities and pathway to European opportunities, with English as the primary language.</p>
-                    <ul class="highlights">
-                        <li>Tech industry hub</li>
-                        <li>English-speaking country</li>
-                        <li>Work-friendly policies</li>
-                        <li>Gateway to Europe</li>
-                        <li>Vibrant student life</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>Trinity College Dublin, University College Dublin (UCD), University of Limerick</p>
+                    <div class="preview">
+                        <p>Ireland offers quality education with a strong tech hub status. Good work opportunities and pathway to European opportunities, with English as the primary language.</p>
+                        <ul class="highlights">
+                            <li>Tech industry hub</li>
+                            <li>English-speaking country</li>
+                            <li>Work-friendly policies</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>Trinity College Dublin, University College Dublin (UCD), University of Limerick</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Discuss career-aligned programs in data, technology, and business, and scholarship and internship strategies.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Focus on universities with industry links and campus recruitment in tech hubs like Dublin and Cork.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare transcripts, references, personal statement and English language proof.</li>
+                            <li>Apply through university portals and track offers and deadlines.</li>
+                            <li>Manage visa timelines and confirm enrolment.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Academic transcripts, passport, English test scores, CV and letters of recommendation</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Student visa and residence permission guidance, proof of funds and health insurance options.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Pre-departure briefing, accommodation options, arrival assistance and city orientation.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Local bank setup, student services registration, internship and job placement guidance.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- Singapore -->
-            <div class="country-card">
+            <section class="country-section">
+            <div id="singapore" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇸🇬</div>
                     <h3>Singapore</h3>
                     <p>Asia's Education Hub</p>
                 </div>
                 <div class="country-content">
-                    <p>Singapore offers excellent quality education with strong career prospects in Asia. Highly developed infrastructure and multicultural environment perfect for international students.</p>
-                    <ul class="highlights">
-                        <li>Top Asia universities</li>
-                        <li>Strong career prospects</li>
-                        <li>Safe & clean city</li>
-                        <li>International environment</li>
-                        <li>Gateway to Asia</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>National University of Singapore (NUS), Nanyang Technological University (NTU)</p>
+                    <div class="preview">
+                        <p>Singapore offers excellent quality education with strong career prospects in Asia. Highly developed infrastructure and multicultural environment perfect for international students.</p>
+                        <ul class="highlights">
+                            <li>Top Asia universities</li>
+                            <li>Strong career prospects</li>
+                            <li>Safe & clean city</li>
+                            <li>International environment</li>
+                            <li>Gateway to Asia</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>National University of Singapore (NUS), Nanyang Technological University (NTU)</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Program fit analysis for business, engineering and computing; scholarship & internship pathways.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Prioritise universities with industry ties and strong regional hiring records.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare academic transcripts, SOP and references.</li>
+                            <li>Submit applications and manage interview requirements.</li>
+                            <li>Confirm offer and prepare visa documents.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Passport, transcripts, English test scores, CV and references</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Student pass application guidance, health checks and proof of funds.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Pre-departure briefing, accommodation help and transport options.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Local orientation, banking and internship search support.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
+            </section>
 
             <!-- Malaysia -->
-            <div class="country-card">
+            <section class="country-section">
+            <div id="malaysia" class="country-card">
                 <div class="country-header">
                     <div class="country-flag">🇲🇾</div>
                     <h3>Malaysia</h3>
                     <p>Affordable Quality Education</p>
                 </div>
                 <div class="country-content">
-                    <p>Malaysia offers affordable, quality education with modern universities and good living standards. Perfect for students seeking good value and Asian experience.</p>
-                    <ul class="highlights">
-                        <li>Very affordable tuition</li>
-                        <li>Modern universities</li>
-                        <li>Low living costs</li>
-                        <li>Diverse student body</li>
-                        <li>Growing job market</li>
-                    </ul>
-                    <div class="popular-unis">
-                        <h4>Top Universities</h4>
-                        <p>Universiti Malaya, Taylor's University, Sunway University, INTI International University</p>
+                    <div class="preview">
+                        <p>Malaysia offers affordable, quality education with modern universities and good living standards. Perfect for students seeking good value and Asian experience.</p>
+                        <ul class="highlights">
+                            <li>Very affordable tuition</li>
+                            <li>Modern universities</li>
+                            <li>Low living costs</li>
+                            <li>Diverse student body</li>
+                            <li>Growing job market</li>
+                        </ul>
+                        <div class="popular-unis">
+                            <h4>Top Universities</h4>
+                            <p>Universiti Malaya, Taylor's University, Sunway University, INTI International University</p>
+                        </div>
+                    </div>
+
+                    <div class="more-content">
+                        <h4>Initial Counselling</h4>
+                        <p>Guidance on cost-effective pathways and credit-transfer options with partner universities.</p>
+
+                        <h4>University Shortlisting</h4>
+                        <p>Shortlist for affordability, program strengths and pathway degrees that articulate to global campuses.</p>
+
+                        <h4>Admission Process</h4>
+                        <ol>
+                            <li>Prepare transcripts, references and SOP.</li>
+                            <li>Apply and coordinate conditional offers and visa timelines.</li>
+                            <li>Finalize accommodation and pre-departure checklist.</li>
+                        </ol>
+
+                        <h4>Documents Required</h4>
+                        <ul>
+                            <li>Passport, academic records, CV, English scores (if needed)</li>
+                        </ul>
+
+                        <h4>Visa Process</h4>
+                        <p>Student visa application process, medical checks and arrival formalities guidance.</p>
+
+                        <h4>Departure & Arrival</h4>
+                        <p>Arrival support, orientation and local registration help.</p>
+
+                        <h4>Post-Arrival Support</h4>
+                        <p>Local contacts, internships and student support services.</p>
+
+                        <button class="close-more">Close</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Other Destinations -->
-    <section class="content-section">
-        <h2 class="section-title">More Destinations</h2>
-        <div class="featured-countries" style="margin-bottom: 0;">
-            <h3>We Also Help With</h3>
-            <p><strong>Dubai & UAE:</strong> Premium education with excellent career prospects in Middle East. Strong salary packages and tax benefits.</p>
-            <p><strong>Cyprus:</strong> Affordable European education with English-medium programs. Gateway to EU with reasonable costs.</p>
-            <p><strong>European Countries:</strong> We facilitate admissions to universities across France, Spain, Netherlands, Belgium, Sweden, and more. Each offering unique advantages.</p>
-            <p>We have partnerships and expertise in over 50 countries, ensuring you have access to worldwide opportunities that match your profile and aspirations.</p>
+            <!-- Dubai & UAE -->
+            <section class="country-section">
+                <div id="uae" class="country-card">
+                    <div class="country-header">
+                        <div class="country-flag">🇦🇪</div>
+                        <h3>Dubai & UAE</h3>
+                        <p>Premium Middle East Education</p>
+                    </div>
+                    <div class="country-content">
+                        <div class="preview">
+                            <p>Dubai and the UAE offer modern university campuses, strong industry links, and excellent career prospects across business, hospitality and engineering sectors.</p>
+                            <ul class="highlights">
+                                <li>Modern campuses</li>
+                                <li>Strong industry recruitment</li>
+                                <li>Tax-efficient career paths</li>
+                            </ul>
+                        </div>
+
+                        <div class="more-content">
+                            <h4>Initial Counselling</h4>
+                            <p>Explore fast-growing sectors, scholarship routes and employer-linked programs in the UAE.</p>
+
+                            <h4>University Shortlisting</h4>
+                            <p>Shortlist institutions with partnerships to regional employers and capstone/project opportunities.</p>
+
+                            <h4>Admission Process</h4>
+                            <ol>
+                                <li>Prepare transcripts, SOP and references.</li>
+                                <li>Apply directly to universities and manage scholarship applications.</li>
+                                <li>Confirm offers and arrange visa sponsorship or student visa as necessary.</li>
+                            </ol>
+
+                            <h4>Documents Required</h4>
+                            <ul>
+                                <li>Passport, academic records, proof of funds, English test scores (if required)</li>
+                            </ul>
+
+                            <h4>Visa Process</h4>
+                            <p>Student visa / entry permit guidance and employer-sponsored visa options after graduation.</p>
+
+                            <h4>Departure & Arrival</h4>
+                            <p>Pre-departure briefing, accommodation and local orientation assistance.</p>
+
+                            <h4>Post-Arrival Support</h4>
+                            <p>Assistance with local registrations, banking and employer introductions.</p>
+
+                            <button class="close-more">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cyprus -->
+            <section class="country-section">
+                <div id="cyprus" class="country-card">
+                    <div class="country-header">
+                        <div class="country-flag">🇨🇾</div>
+                        <h3>Cyprus</h3>
+                        <p>Accessible European Education</p>
+                    </div>
+                    <div class="country-content">
+                        <div class="preview">
+                            <p>Cyprus provides English-medium programs, affordable tuition and a gentle transition into European higher education systems.</p>
+                            <ul class="highlights">
+                                <li>English-medium programs</li>
+                                <li>Affordable European option</li>
+                                <li>Gateway to EU opportunities</li>
+                            </ul>
+                        </div>
+
+                        <div class="more-content">
+                            <h4>Initial Counselling</h4>
+                            <p>Assess program fit, credit transfer routes and scholarship options in Cypriot universities.</p>
+
+                            <h4>University Shortlisting</h4>
+                            <p>Prioritise institutions with English instruction and clear articulation agreements to Europe.</p>
+
+                            <h4>Admission Process</h4>
+                            <ol>
+                                <li>Prepare transcripts, passport and SOP.</li>
+                                <li>Apply and coordinate offers and accommodations.</li>
+                                <li>Assist with visa/entry permissions for non-EU nationals.</li>
+                            </ol>
+
+                            <h4>Documents Required</h4>
+                            <ul>
+                                <li>Academic records, passport, proof of funds and English test scores (when required)</li>
+                            </ul>
+
+                            <h4>Visa Process</h4>
+                            <p>Student visa guidance and arrival formalities for EU/non-EU students.</p>
+
+                            <h4>Departure & Arrival</h4>
+                            <p>Pre-departure planning, airport pickup options and orientation support.</p>
+
+                            <h4>Post-Arrival Support</h4>
+                            <p>Assistance with local formalities, housing and integration into campus life.</p>
+
+                            <button class="close-more">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- European Countries (overview) -->
+            <section class="country-section">
+                <div id="europe" class="country-card">
+                    <div class="country-header">
+                        <div class="country-flag">🇪🇺</div>
+                        <h3>European Countries</h3>
+                        <p>Wide-ranging EU Options</p>
+                    </div>
+                    <div class="country-content">
+                        <div class="preview">
+                            <p>Europe offers diverse pathways: tuition-free options in Germany, research-led programs in the Netherlands, and specialist schools across France and Spain.</p>
+                            <ul class="highlights">
+                                <li>Tuition-friendly options</li>
+                                <li>Research and industry links</li>
+                                <li>Varied language & scholarship choices</li>
+                            </ul>
+                        </div>
+
+                        <div class="more-content">
+                            <h4>Initial Counselling</h4>
+                            <p>Identify the best-fit countries by discipline, cost, language and post-study prospects.</p>
+
+                            <h4>University Shortlisting</h4>
+                            <p>Shortlist programs across France, Spain, Netherlands, Belgium, Sweden and more based on outcomes and costs.</p>
+
+                            <h4>Admission Process</h4>
+                            <ol>
+                                <li>Prepare translations, transcripts and language evidence where necessary.</li>
+                                <li>Apply via national portals or university systems and track multiple deadlines.</li>
+                                <li>Secure accommodation and prepare for local regulations (residency, health insurance).</li>
+                            </ol>
+
+                            <h4>Documents Required</h4>
+                            <ul>
+                                <li>Academic records, passport, translations, language certificates and proof of funds</li>
+                            </ul>
+
+                            <h4>Visa Process</h4>
+                            <p>Schengen/Student visa guidance depending on country, plus residency support where applicable.</p>
+
+                            <h4>Departure & Arrival</h4>
+                            <p>Pre-departure checklist, city orientation and local registrations.</p>
+
+                            <h4>Post-Arrival Support</h4>
+                            <p>Local campus orientation, internship links and academic integration assistance.</p>
+
+                            <button class="close-more">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
 
@@ -870,7 +1415,7 @@
             <!-- Contact Info -->
             <div class="footer-contact">
                 <h3>+91 7799776678 / 7799776679</h3>
-                <p>2nd Floor, SARLA MANSION, 10/A, SR NAGAR, X ROADS, Mothi Nagar, Vengal Rao Nagar, Hyderabad, Telangana - 500038.</p>
+                <p>Flat No. 202, 2nd Floor, Sarla Mansion, 10/A, SR Nagar X Roads, Opposite SR Nagar Metro Station, Hyderabad, Telangana - 500038.</p>
             </div>
 
             <!-- Glass Navigation Bar -->
@@ -1001,6 +1546,66 @@
             if (link.getAttribute('href') === currentLocation) {
                 link.classList.add('active');
             }
+        });
+
+        /* Insert Know More buttons and attach expand/close handlers */
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardsContainer = document.querySelector('.countries-grid');
+            const cards = document.querySelectorAll('.country-card');
+
+            // Add buttons and extra content for each card (reuse existing .more-content when present)
+            cards.forEach(card => {
+                const content = card.querySelector('.country-content');
+
+                // reuse or create Know More button
+                let knowBtn = content.querySelector('.know-more');
+                if (!knowBtn) {
+                    knowBtn = document.createElement('button');
+                    knowBtn.className = 'know-more';
+                    knowBtn.textContent = 'Know More';
+                    content.appendChild(knowBtn);
+                }
+
+                // reuse existing more-content if present, otherwise create
+                let more = content.querySelector('.more-content');
+                if (!more) {
+                    more = document.createElement('div');
+                    more.className = 'more-content';
+                    more.innerHTML = `<p style="margin:0 0 0.6rem 0; color: #444; line-height:1.75;">Eagledu provides tailored guidance, scholarships assistance, interview prep, and post-arrival support for students applying to this destination. Our experts will help you choose suitable programs and maximize admission chances.</p>`;
+                    content.appendChild(more);
+                }
+
+                // ensure a close button exists inside more
+                let closeBtn = more.querySelector('.close-more');
+                if (!closeBtn) {
+                    closeBtn = document.createElement('button');
+                    closeBtn.className = 'close-more';
+                    closeBtn.textContent = 'Close';
+                    more.appendChild(closeBtn);
+                }
+
+                // handlers
+                knowBtn.addEventListener('click', (e) => {
+                    card.classList.add('expanded');
+                    cardsContainer.classList.add('cards-dim');
+                    card.scrollIntoView({behavior: 'smooth', block: 'center'});
+                });
+
+                closeBtn.addEventListener('click', (e) => {
+                    card.classList.remove('expanded');
+                    cardsContainer.classList.remove('cards-dim');
+                    knowBtn.focus();
+                });
+            });
+
+            // Close expanded card when clicking outside a card
+            document.addEventListener('click', (e) => {
+                const expanded = document.querySelector('.country-card.expanded');
+                if (expanded && !expanded.contains(e.target) && !e.target.classList.contains('know-more')) {
+                    expanded.classList.remove('expanded');
+                    cardsContainer.classList.remove('cards-dim');
+                }
+            });
         });
     </script>
 </body>
