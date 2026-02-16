@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://www.eagledu.in/</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eagledu.in/about.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eagledu.in/services.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eagledu.in/countries.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eagledu.in/contact.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eagledu.in/privacy-policy.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://www.eagledu.in/terms-of-service.html</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.60</priority>
+  </url>
+
+</urlset>
